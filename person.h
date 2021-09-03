@@ -14,8 +14,8 @@ public:
 public:   
    virtual bool isHitting() const = 0;
    bool isBusted() const;
-   void bust() const;
-   void win() const;
+   void showBust() const;
+   void showWin() const;
 private:
    std::string m_name;
    Hand m_hand;

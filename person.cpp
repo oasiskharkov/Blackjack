@@ -11,12 +11,12 @@ bool Person::isBusted() const
    return m_hand.total() > GameParams::blackjack;
 }
 
-void Person::bust() const
+void Person::showBust() const
 {
    std::cout << m_name << ' ' << " bust!" << std::endl;
 }
 
-void Person::win() const
+void Person::showWin() const
 {
    std::cout << m_name << ' ' << " win!" << std::endl;
 }
