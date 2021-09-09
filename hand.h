@@ -4,9 +4,9 @@
 #include <memory>
 #include <algorithm>
 
-class Card;
+#include "card.h"
 
-namespace
+namespace GameParams
 {
    constexpr int blackjack = 21;
 }
@@ -17,7 +17,7 @@ public:
    Hand() = default;
    Hand(const Hand&) = delete;
    Hand& operator = (const Hand&) = delete;
-
+public:
    void clear();
    void add(std::unique_ptr<Card> card);
    int total() const;
