@@ -8,5 +8,6 @@ public:
    explicit Dealer(std::string&& name = "Dealer");
 public:
    bool isHitting() const override;
+   void flipFirstCard();
 private:
 };

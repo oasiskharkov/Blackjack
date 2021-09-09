@@ -1,5 +1,9 @@
 #pragma once
 
+#include <iostream>
+
+#include "game_params.h"
+
 class Card
 {
 public:
@@ -13,8 +17,11 @@ public:
    bool isShirtUp() const;
    int value() const;
    void flip();
+   std::string rankSuitToString() const;
 private:
    Suit m_suit;
    Rank m_rank;
    bool m_isShirtUp;
 };
+
+std::ostream& operator << (std::ostream& out, const Card& card);

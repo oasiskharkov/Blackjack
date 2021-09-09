@@ -15,17 +15,43 @@ bool Hand::isBlackjack() const
 {
    int sum = total();
    int cardsCount = m_cards.size();
-   if (cardsCount == 2 and sum == GameParams::blackjack)
+   if (cardsCount == GameParams::cardsWinBlackjack and sum == GameParams::blackjack)
    {     
       Card* first = m_cards[0].get();
       Card* second = m_cards[1].get();
-      if ((first->value() == 10 and second->rank() == Card::Rank::ACE) or
-         (second->value() == 10 and first->rank() == Card::Rank::ACE))
+      if ((first->value() == GameParams::pictureCost and second->rank() == Card::Rank::ACE) or
+         (second->value() == GameParams::pictureCost and first->rank() == Card::Rank::ACE))
       {
          return true;
       }
    }
    return false;
+}
+
+bool Hand::empty() const
+{
+   return m_cards.empty();
+}
+
+void Hand::flipCard(const int index)
+{
+   if (m_cards.empty())
+   {
+      throw std::logic_error("Deck is empty. Can't flip a card.");
+   }
+   if (index < 0 or (size_t)index >= m_cards.size())
+   {
+      throw std::logic_error("Incorrect index. Can't flip a card.");
+   }
+   m_cards.at(index)->flip();
+}
+
+void Hand::printAllCards(std::ostream& out) const
+{
+   for (const auto& card : m_cards)
+   {
+      out << card << '\t';
+   }
 }
 
 int Hand::total() const
@@ -40,9 +66,9 @@ int Hand::total() const
 
    for (int i = 0; i < aceCount; ++i)
    {
-      if (sum <= GameParams::blackjack - 10)
+      if (sum <= GameParams::blackjack - GameParams::aceAdd)
       {
-         sum += 10;
+         sum += GameParams::aceAdd;
       }
    }
    return sum;

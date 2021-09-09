@@ -8,5 +8,10 @@ Dealer::Dealer(std::string&& name) :
 
 bool Dealer::isHitting() const
 {
-   return false;
+   return hand().total() < GameParams::dealerLimit;
+}
+
+void Dealer::flipFirstCard()
+{
+   hand().flipCard(0);
 }
