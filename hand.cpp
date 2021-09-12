@@ -46,7 +46,7 @@ void Hand::flipCard(const int index)
    m_cards.at(index)->flip();
 }
 
-void Hand::printAllCards(std::ostream& out) const
+void Hand::printCards(std::ostream& out) const
 {
    for (const auto& card : m_cards)
    {

@@ -7,4 +7,5 @@ namespace GameParams
    constexpr int aceAdd = 10;
    constexpr int cardsWinBlackjack = 2;
    constexpr int pictureCost = 10;
+   constexpr int minCardsCount = 15;
 }

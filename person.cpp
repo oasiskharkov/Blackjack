@@ -38,7 +38,7 @@ std::ostream& operator << (std::ostream& out, const Person& person)
    const auto& hand = person.hand();
    if (!hand.empty())
    {
-      hand.printAllCards(out);
+      hand.printCards(out);
 
       if (hand.total() != 0)
       {

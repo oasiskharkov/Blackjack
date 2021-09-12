@@ -23,7 +23,20 @@ bool Card::isShirtUp() const
 
 int Card::value() const
 {
-   return static_cast<int>(m_rank);
+   int value = static_cast<int>(m_rank);
+   if (m_rank == Rank::JACK)
+   {
+      value -= 1;
+   }
+   else if (m_rank == Rank::QUEEN)
+   {
+      value -= 2;
+   }
+   else if (m_rank == Rank::KING)
+   {
+      value -= 3;
+   }
+   return value;
 }
 
 void Card::flip()
@@ -33,27 +46,9 @@ void Card::flip()
 
 std::string Card::rankSuitToString() const
 {
-   std::string suits[] = { "S", "C", "D", "H" };
-   std::string result;
-   if (m_rank == Rank::JACK)
-   {
-      result = "J";
-   }
-   else if (m_rank == Rank::QUEEN)
-   {
-      result = "Q";
-   }
-   else if (m_rank == Rank::KING)
-   {
-      result = "K";
-   }
-   else
-   {
-      const std::string ranks[] = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
-      result = ranks[static_cast<int>(m_rank) - 1];
-   }
-   result += suits[static_cast<int>(m_suit)];
-   return result;
+   const std::string suits[] = { "S", "C", "D", "H" };
+   const std::string ranks[] = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+   return ranks[static_cast<int>(m_rank) - 1] + suits[static_cast<int>(m_suit)];
 }
 
 std::ostream& operator << (std::ostream& out, const Card& card)

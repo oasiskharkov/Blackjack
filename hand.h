@@ -21,7 +21,7 @@ public:
    bool isBlackjack() const;
    bool empty() const;
    void flipCard(const int index);
-   void printAllCards(std::ostream& out) const;
+   void printCards(std::ostream& out) const;
 private:
    std::vector<std::unique_ptr<Card>> m_cards;
 };
