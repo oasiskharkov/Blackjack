@@ -2,7 +2,6 @@
 
 Deck::Deck()
 {
-   m_seed = static_cast<unsigned>(std::chrono::system_clock::now().time_since_epoch().count());
    fill();
 }
 
@@ -24,7 +23,8 @@ void Deck::clear()
 
 void Deck::shuffle()
 {
-   std::shuffle(m_deck.begin(), m_deck.end(), std::default_random_engine(m_seed));
+   unsigned seed = static_cast<unsigned>(std::chrono::system_clock::now().time_since_epoch().count());
+   std::shuffle(m_deck.begin(), m_deck.end(), std::default_random_engine(seed));
 }
 
 bool Deck::needToUpdate() const
