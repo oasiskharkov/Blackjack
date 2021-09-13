@@ -57,8 +57,6 @@ void Table::play()
 
       if (m_player.hand().isBlackjack())
       {
-         m_dealer.flipFirstCard();
-         update();
          m_player.showBlackjack();
          state = m_player.exit();
          reset();
@@ -86,7 +84,6 @@ void Table::play()
          }
       }
 
-      update();
       if (m_player.isBusted())
       {
          m_player.showBust();

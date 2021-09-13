@@ -22,6 +22,5 @@ public:
    std::unique_ptr<Card> deal();
 private:
    Cards m_deck;
-   unsigned m_seed;
 };
 
