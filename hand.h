@@ -4,7 +4,6 @@
 #include <memory>
 #include <algorithm>
 #include <iostream>
-#include <unordered_map>
 
 #include "card.h"
 
@@ -23,5 +22,5 @@ public:
    void flipCard(const int index);
    void printCards(std::ostream& out) const;
 private:
-   std::vector<std::unique_ptr<Card>> m_cards;
+   Cards m_cards;
 };

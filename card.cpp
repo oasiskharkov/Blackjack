@@ -1,9 +1,9 @@
 #include "card.h"
 
 Card::Card(Suit suit, Rank rank, bool isShirtUp) :
-   m_suit{ suit },
-   m_rank{ rank },
-   m_isShirtUp{ isShirtUp }
+   m_suit{suit},
+   m_rank{rank},
+   m_isShirtUp{isShirtUp}
 {}
 
 Card::Suit Card::suit() const
@@ -44,13 +44,6 @@ void Card::flip()
    m_isShirtUp = !m_isShirtUp;
 }
 
-std::string Card::rankSuitToString() const
-{
-   const std::string suits[] = { "S", "C", "D", "H" };
-   const std::string ranks[] = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
-   return ranks[static_cast<int>(m_rank) - 1] + suits[static_cast<int>(m_suit)];
-}
-
 std::ostream& operator << (std::ostream& out, const Card& card)
 {
    if (card.isShirtUp())
@@ -59,7 +52,9 @@ std::ostream& operator << (std::ostream& out, const Card& card)
    }
    else
    {
-      out << card.rankSuitToString();
+      const std::string suits[] = { "S", "C", "D", "H" };
+      const std::string ranks[] = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+      out << ranks[static_cast<int>(card.rank()) - 1] << suits[static_cast<int>(card.suit())];
    }
    return out;
 }

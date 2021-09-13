@@ -13,9 +13,8 @@ void Hand::add(std::unique_ptr<Card> card)
 
 bool Hand::isBlackjack() const
 {
-   int sum = total();
    int cardsCount = m_cards.size();
-   if (cardsCount == GameParams::cardsWinBlackjack and sum == GameParams::blackjack)
+   if (cardsCount == GameParams::dealCardsCount)
    {     
       Card* first = m_cards[0].get();
       Card* second = m_cards[1].get();
@@ -35,13 +34,13 @@ bool Hand::empty() const
 
 void Hand::flipCard(const int index)
 {
-   if (m_cards.empty())
+   if (empty())
    {
-      throw std::logic_error("Deck is empty. Can't flip a card.");
+      throw std::logic_error("Deck is empty. Can't flip a card!");
    }
    if (index < 0 or (size_t)index >= m_cards.size())
    {
-      throw std::logic_error("Incorrect index. Can't flip a card.");
+      throw std::logic_error("Incorrect index. Can't flip a card!");
    }
    m_cards.at(index)->flip();
 }
@@ -50,7 +49,7 @@ void Hand::printCards(std::ostream& out) const
 {
    for (const auto& card : m_cards)
    {
-      out << card << '\t';
+      out << *card << ' ';
    }
 }
 
@@ -58,10 +57,10 @@ int Hand::total() const
 {
    int sum = 0;
    int aceCount = std::count_if(m_cards.begin(), m_cards.end(), 
-      [](const std::unique_ptr<Card>& card) { return card->rank() == Card::Rank::ACE; });
+      [](const std::unique_ptr<Card>& card) { return card->rank() == Card::Rank::ACE && !card->isShirtUp(); });
    for (const auto& card : m_cards)
    {
-      sum += card->value();
+      sum += (!card->isShirtUp() ? card->value() : 0);
    }
 
    for (int i = 0; i < aceCount; ++i)

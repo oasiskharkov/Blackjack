@@ -28,7 +28,7 @@ bool Person::isBusted() const
 
 void Person::showWin() const
 {
-   std::cout << m_name << ' ' << " win!" << std::endl;
+   std::cout << m_name << ' ' << "win!" << std::endl;
 }
 
 std::ostream& operator << (std::ostream& out, const Person& person)
@@ -47,7 +47,7 @@ std::ostream& operator << (std::ostream& out, const Person& person)
    }
    else
    {
-      out << "<empty>";
+      throw std::logic_error("Hand is empty. Can't show cards!");
    }
 
    return out;

@@ -19,9 +19,9 @@ public:
    void clear();
    void shuffle();
    bool needToUpdate() const;
-   std::unique_ptr<Card> getCard();
+   std::unique_ptr<Card> deal();
 private:
-   std::vector<std::unique_ptr<Card>> m_deck;
+   Cards m_deck;
    unsigned m_seed;
 };
 

@@ -11,6 +11,8 @@ public:
    Table& operator = (const Table&) = delete;
    static Table* getInstance(std::string&& name);
    void play();
+   void update() const;
+   void reset();
 private:
    Table(std::string&& name);
    static Table* instance;

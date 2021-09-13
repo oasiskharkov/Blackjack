@@ -32,11 +32,11 @@ bool Deck::needToUpdate() const
    return m_deck.size() < GameParams::minCardsCount;
 }
 
-std::unique_ptr<Card> Deck::getCard()
+std::unique_ptr<Card> Deck::deal()
 {
    if (m_deck.empty())
    {
-      throw std::logic_error("Deck is empty. Can't get a card.");
+      throw std::logic_error("Deck is empty. Can't deal a card!");
    }
    std::unique_ptr<Card> last = std::move(m_deck.back());
    m_deck.pop_back();
