@@ -6,8 +6,9 @@ class Player final : public Person
 {
 public:
    Player(std::string&& name);
-public:
    bool isHitting() const override;
-private:
+   void showPush() const;
+   void showBust() const;
+   void showBlackjack() const;
+   bool exit() const;
 };
-

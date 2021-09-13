@@ -3,13 +3,9 @@
 #include <vector>
 #include <memory>
 #include <algorithm>
+#include <iostream>
 
 #include "card.h"
-
-namespace GameParams
-{
-   constexpr int blackjack = 21;
-}
 
 class Hand
 {
@@ -22,6 +18,9 @@ public:
    void add(std::unique_ptr<Card> card);
    int total() const;
    bool isBlackjack() const;
+   bool empty() const;
+   void flipCard(const int index);
+   void printCards(std::ostream& out) const;
 private:
-   std::vector<std::unique_ptr<Card>> m_cards;
+   Cards m_cards;
 };
