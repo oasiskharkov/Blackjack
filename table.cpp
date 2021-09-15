@@ -46,7 +46,7 @@ void Table::play()
       for (int i = 0; i < GameParams::dealCardsCount; ++i)
       {
          auto card1 = m_deck.deal();
-         card1->flip(); 
+         card1->flip();
          m_player.hand().add(std::move(card1));
          auto card2 = m_deck.deal();
          card2->flip();
