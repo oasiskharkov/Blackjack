@@ -28,7 +28,7 @@ bool Person::isBusted() const
 
 void Person::showWin() const
 {
-   std::cout << m_name << ' ' << "win!" << std::endl;
+   std::cout << m_name << ' ' << "wins!" << std::endl;
 }
 
 std::ostream& operator << (std::ostream& out, const Person& person)
