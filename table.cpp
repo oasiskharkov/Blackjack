@@ -87,6 +87,8 @@ void Table::play()
 
       if (m_player.isBusted())
       {
+         m_dealer.flipFirstCard();
+         update();
          m_player.showBust();
          state = m_player.exit();
          reset();
