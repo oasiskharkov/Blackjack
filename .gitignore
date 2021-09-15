@@ -37,3 +37,7 @@
 /Blackjack.sln
 /.gitattributes
 /Debug
+/build
+/bin
+CMakeLists.txt.user
+/x64/Debug

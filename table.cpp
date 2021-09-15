@@ -1,4 +1,5 @@
 #include "table.h"
+#include "utils.h"
 
 Table* Table::instance = nullptr;
 
@@ -19,9 +20,9 @@ Table::Table(std::string&& name) :
 
 void Table::update() const
 {
-   std::system("cls");
-   std::cout << m_dealer << std::endl;
-   std::cout << m_player << std::endl;
+    Utils::clearScreen();
+    std::cout << m_dealer << std::endl;
+    std::cout << m_player << std::endl;
 }
 
 void Table::reset()
