@@ -13,7 +13,7 @@ void Hand::add(std::unique_ptr<Card> card)
 
 bool Hand::isBlackjack() const
 {
-   int cardsCount = m_cards.size();
+   int cardsCount = static_cast<int>(m_cards.size());
    if (cardsCount == GameParams::dealCardsCount)
    {     
       Card* first = m_cards[0].get();
@@ -56,8 +56,8 @@ void Hand::printCards(std::ostream& out) const
 int Hand::total() const
 {
    int sum = 0;
-   int aceCount = std::count_if(m_cards.begin(), m_cards.end(), 
-      [](const std::unique_ptr<Card>& card) { return card->rank() == Card::Rank::ACE && !card->isShirtUp(); });
+   int aceCount = static_cast<int>(std::count_if(m_cards.begin(), m_cards.end(), 
+      [](const std::unique_ptr<Card>& card) { return card->rank() == Card::Rank::ACE && !card->isShirtUp(); }));
    for (const auto& card : m_cards)
    {
       sum += (!card->isShirtUp() ? card->value() : 0);
